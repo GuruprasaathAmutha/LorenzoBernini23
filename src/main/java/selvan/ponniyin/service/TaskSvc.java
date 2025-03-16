@@ -13,12 +13,15 @@ public class TaskSvc {
 
 	@Autowired
 	private TaskRepo trepo;
-	
-	public List<Tasks> allTasks() {
-		return trepo.findAll();
-	}
-	
+		
 	public Tasks addTask(Tasks t) {
 		return trepo.save(t);
 	}
+	
+	public List<Tasks> findBystatus(String status){
+		return trepo.findBystatus(status);
+	}
+	
+	
+	
 }

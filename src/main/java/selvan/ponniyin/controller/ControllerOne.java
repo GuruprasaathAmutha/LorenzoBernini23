@@ -28,34 +28,21 @@ public class ControllerOne {
 		List<Tasks> createdTask = new ArrayList<Tasks>();
 		createdTask.add(ts.addTask(create));
 		return ResponseEntity.ok(createdTask);
-
 	}
 
 	@GetMapping("/Pending")
 	public ResponseEntity<List<Tasks>> pending() {
-
-		List<Tasks> allTasks = ts.allTasks();
-		return ResponseEntity.ok(allTasks);
+		return ResponseEntity.ok(ts.findBystatus("pending"));
 	}
 
 	@GetMapping("/onProgress")
 	public ResponseEntity<List<Tasks>> onProgress() {
-
-		Tasks one = new Tasks(1, "taskone", "pending");
-
-		ts.addTask(one);
-		List<Tasks> allTasks = new ArrayList<Tasks>();
-		allTasks.add(one);
-
-		return ResponseEntity.ok(allTasks);
+		return ResponseEntity.ok(ts.findBystatus("OnProgress"));
 	}
 
 	@GetMapping("/Completed")
 	public ResponseEntity<List<Tasks>> completed() {
-
-		List<Tasks> allTasks = new ArrayList<Tasks>();
-
-		return ResponseEntity.ok(allTasks);
+		return ResponseEntity.ok(ts.findBystatus("Completed"));
 	}
 
 }

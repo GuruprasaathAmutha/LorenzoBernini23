@@ -6,7 +6,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import selvan.ponnyin.Enum.Status;
 
 
 @Entity
@@ -37,8 +36,6 @@ public class Tasks {
 
 	}
 
-
-
 	public int getTaskid() {
 		return Taskid;
 	}
@@ -55,6 +52,15 @@ public class Tasks {
 		Task = task;
 	}
 
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
 
 	
