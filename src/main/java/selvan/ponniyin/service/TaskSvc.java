@@ -1,6 +1,7 @@
 package selvan.ponniyin.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,55 @@ public class TaskSvc {
 	public List<Tasks> findBystatus(String status){
 		return trepo.findBystatus(status);
 	}
+	
+	public boolean updateOnprogressbyId(int id) {
+		Optional<Tasks> existingtask = trepo.findById(id);
+		if(existingtask.isPresent()) {
+			Tasks t = existingtask.get();
+			t.setStatus("OnProgress");
+			return trepo.save(t)!=null ? true:false;
+		}
+		System.out.println("Task with taskid "+id + " is not present");
+		return false;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public boolean updateToCompleted(int taskid) {
+		return true;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

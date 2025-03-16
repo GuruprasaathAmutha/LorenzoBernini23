@@ -34,6 +34,11 @@ public class ControllerOne {
 	public ResponseEntity<List<Tasks>> pending() {
 		return ResponseEntity.ok(ts.findBystatus("pending"));
 	}
+	
+	@PostMapping("/toOnprogress")
+	public ResponseEntity<Boolean> toOnprogress(@RequestParam int taskid){
+		return ResponseEntity.ok(ts.updateOnprogressbyId(taskid));
+	}
 
 	@GetMapping("/onProgress")
 	public ResponseEntity<List<Tasks>> onProgress() {
