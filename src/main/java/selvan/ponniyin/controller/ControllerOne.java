@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import selvan.ponniyin.dto.Tasks;
@@ -20,6 +22,15 @@ public class ControllerOne {
 	@Autowired
 	TaskSvc ts;
 
+	@PostMapping("/newTask")
+	public ResponseEntity<List<Tasks>> newTask(@RequestParam String task) {
+		Tasks create = new Tasks(task, "pending");
+		List<Tasks> createdTask = new ArrayList<Tasks>();
+		createdTask.add(ts.addTask(create));
+		return ResponseEntity.ok(createdTask);
+
+	}
+
 	@GetMapping("/Pending")
 	public ResponseEntity<List<Tasks>> pending() {
 
@@ -29,11 +40,11 @@ public class ControllerOne {
 
 	@GetMapping("/onProgress")
 	public ResponseEntity<List<Tasks>> onProgress() {
-		
+
 		Tasks one = new Tasks(1, "taskone", "pending");
-		
+
 		ts.addTask(one);
-		List<Tasks> allTasks =new ArrayList<Tasks>(); 
+		List<Tasks> allTasks = new ArrayList<Tasks>();
 		allTasks.add(one);
 
 		return ResponseEntity.ok(allTasks);

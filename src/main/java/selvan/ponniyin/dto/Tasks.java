@@ -26,9 +26,13 @@ public class Tasks {
 	}
 	
 	
-	
-	
-	
+	public Tasks(String task, String status) {
+		super();
+		Task = task;
+		this.status = status;
+	}
+
+
 	public Tasks() {
 
 	}
