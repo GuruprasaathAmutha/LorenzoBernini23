@@ -14,64 +14,34 @@ public class TaskSvc {
 
 	@Autowired
 	private TaskRepo trepo;
-		
+
 	public Tasks addTask(Tasks t) {
 		return trepo.save(t);
 	}
-	
-	public List<Tasks> findBystatus(String status){
+
+	public List<Tasks> findBystatus(String status) {
 		return trepo.findBystatus(status);
 	}
-	
+
 	public boolean updateOnprogressbyId(int id) {
 		Optional<Tasks> existingtask = trepo.findById(id);
-		if(existingtask.isPresent()) {
+		if (existingtask.isPresent()) {
 			Tasks t = existingtask.get();
 			t.setStatus("OnProgress");
-			return trepo.save(t)!=null ? true:false;
+			return trepo.save(t) != null ? true : false;
 		}
-		System.out.println("Task with taskid "+id + " is not present");
+		System.out.println("Task with taskid " + id + " is not present");
 		return false;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public boolean updateToCompleted(int taskid) {
-		return true;
+
+	public boolean updateToCompleted(int id) {
+		Optional<Tasks> existing = trepo.findById(id);
+		if (existing.isPresent()) {
+			Tasks t = existing.get();
+			t.setStatus("Completed");
+			return trepo.save(t) != null ? true : false;
+		}
+		return false;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
