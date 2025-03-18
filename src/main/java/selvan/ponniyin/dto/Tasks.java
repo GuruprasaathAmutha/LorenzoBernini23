@@ -14,20 +14,20 @@ public class Tasks {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int Taskid;
-	String Task;
-	String status ;
+	private int taskid;
+	private String task;
+	private String status ;
 	
 	public Tasks(int id,String task,String status) {
-		this.Taskid=id;
-		this.Task=task;
+		this.taskid=id;
+		this.task=task;
 		this.status=status;
 	}
 	
 	
 	public Tasks(String task, String status) {
 		super();
-		Task = task;
+		this.task = task;
 		this.status = status;
 	}
 
@@ -36,20 +36,24 @@ public class Tasks {
 
 	}
 
+
 	public int getTaskid() {
-		return Taskid;
+		return taskid;
 	}
+
 
 	public void setTaskid(int taskid) {
-		Taskid = taskid;
+		this.taskid = taskid;
 	}
+
 
 	public String getTask() {
-		return Task;
+		return task;
 	}
 
+
 	public void setTask(String task) {
-		Task = task;
+		this.task = task;
 	}
 
 

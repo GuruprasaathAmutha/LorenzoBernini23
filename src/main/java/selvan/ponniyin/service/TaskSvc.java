@@ -19,8 +19,8 @@ public class TaskSvc {
 		return trepo.save(t);
 	}
 
-	public List<Tasks> findBystatus(String status) {
-		return trepo.findBystatus(status);
+	public List<Tasks> findByStatusOrderByTaskidDesc(String status) {
+		return trepo.findByStatusOrderByTaskidDesc(status);
 	}
 
 	public boolean updateOnprogressbyId(int id) {

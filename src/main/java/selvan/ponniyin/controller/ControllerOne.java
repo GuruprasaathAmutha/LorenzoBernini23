@@ -32,18 +32,18 @@ public class ControllerOne {
 
 	@GetMapping("/Pending")
 	public ResponseEntity<List<Tasks>> pending() {
-		return ResponseEntity.ok(ts.findBystatus("pending"));
+		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("pending"));
 	}
 
 
 	@GetMapping("/onProgress")
 	public ResponseEntity<List<Tasks>> onProgress() {
-		return ResponseEntity.ok(ts.findBystatus("OnProgress"));
+		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("OnProgress"));
 	}
 
 	@GetMapping("/Completed")
 	public ResponseEntity<List<Tasks>> completed() {
-		return ResponseEntity.ok(ts.findBystatus("Completed"));
+		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("Completed"));
 	}
 
 	
