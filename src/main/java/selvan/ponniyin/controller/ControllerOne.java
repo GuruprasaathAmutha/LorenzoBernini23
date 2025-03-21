@@ -15,7 +15,7 @@ import selvan.ponniyin.dto.Tasks;
 import selvan.ponniyin.repo.TaskRepo;
 import selvan.ponniyin.service.TaskSvc;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = {"https://192.168.68.155:5173","http://localhost:5173"})
 @RestController
 public class ControllerOne {
 
