@@ -23,7 +23,7 @@ public class ControllerOne {
 	TaskSvc ts;
 
 	@PostMapping("/newTask")
-	public ResponseEntity<List<Tasks>> newTask(@RequestParam String task) {
+	public ResponseEntity<List<Tasks>> newTask(@RequestParam	 String task) {
 		Tasks create = new Tasks(task, "pending");
 		List<Tasks> createdTask = new ArrayList<Tasks>();
 		createdTask.add(ts.addTask(create));
