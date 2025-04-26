@@ -3,14 +3,73 @@ package selvan.ponniyin.DSAprac;
 import selvan.ponniyin.DSAprac.Sort.MergeSort;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
 public class DaVinci {
 
     public static void main(String[] args) {
-        MergeSort ms = new MergeSort();
-        ms.MergeSortMethod(new int[] {1,6,2,62,4,8,2,8,11,33});
+//        MergeSort ms = new MergeSort();
+//        ms.MergeSortMethod(new int[] {1,6,2,62,4,8,2,8,11,33});
+        HashMap<Character,Integer> smap,tmap = new HashMap<>();
+//        smap.put()
+//        smap.containsKey()
+
+        String s = "jean";
+        String k = "neaj";
+        System.out.println(isAnagramII(s, k));
+
+    }
+
+
+    public static boolean isAnagramII(String s,String t){
+            if(s.length()==t.length()){
+                int[] count = new int[26];
+                for(int i=0;i<s.length();i++){
+                    count[s.charAt(i)-'a']++;
+                    count[t.charAt(i)-'a']--;
+                }
+                for(int i=0;i<count.length;i++){
+                    if(count[i]!=0){
+                        return false;
+                    }
+                }
+            }else{
+                return false;
+            }
+            return true;
+    }
+
+
+    public static boolean isAnagram(String s,String t){
+        char[] sarr = s.toCharArray();
+        char[] tarr = t.toCharArray();
+        HashMap<Character,Integer> smap = new HashMap<>(),tmap = new HashMap<>();
+        for(int i=0;i<sarr.length;i++){
+            if(!tmap.containsKey(tarr[i])){
+                tmap.put(tarr[i],1);
+            }else{
+                tmap.put(tarr[i],smap.get(tarr[i])+1);
+            }
+            if(!smap.containsKey(sarr[i])){
+                smap.put(sarr[i],1);
+            }else {
+                smap.put((sarr[i]),smap.get(sarr[i])+1);
+            }
+        }
+        for ( char key : smap.keySet() ){
+            if(tmap.containsKey(key)){
+                if(tmap.get(key) == smap.get(key)){
+                    continue;
+                }else{
+                    return false;
+                }
+            }else{
+                return false;
+            }
+        }
+        return true;
     }
 
 
