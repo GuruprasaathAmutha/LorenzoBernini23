@@ -1,7 +1,5 @@
 package selvan.ponniyin.DSAprac;
 
-import selvan.ponniyin.DSAprac.Sort.MergeSort;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,12 +7,9 @@ import java.util.Set;
 
 public class DaVinci {
 
+
     public static void main(String[] args) {
-//        MergeSort ms = new MergeSort();
-//        ms.MergeSortMethod(new int[] {1,6,2,62,4,8,2,8,11,33});
         HashMap<Character,Integer> smap,tmap = new HashMap<>();
-//        smap.put()
-//        smap.containsKey()
 
         String s = "jean";
         String k = "neaj";
