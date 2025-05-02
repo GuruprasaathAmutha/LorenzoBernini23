@@ -1,5 +1,8 @@
 package selvan.ponniyin.DSAprac;
 
+import selvan.ponniyin.DSAprac.LinkedList.DLL;
+import selvan.ponniyin.DSAprac.LinkedList.LLImp;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,13 +12,65 @@ public class DaVinci {
 
 
     public static void main(String[] args) {
-        HashMap<Character,Integer> smap,tmap = new HashMap<>();
+//        HashMap<Character,Integer> smap,tmap = new HashMap<>();
+//
+//        String s = "jean";
+//        String k = "neaj";
+//        System.out.println(isAnagramII(s, k));
 
-        String s = "jean";
-        String k = "neaj";
-        System.out.println(isAnagramII(s, k));
+//        LLImp linkedlist = new LLImp();
+//        linkedlist.insert(1);
+//        linkedlist.insert(2);
+//        linkedlist.insert(3);
+//        linkedlist.insertAtStart(10);
+//        linkedlist.insertAt(3,5);
+//        linkedlist.show();
+//        System.out.println("Size of the list is " +linkedlist.size());
+
+        canPlaceFlowers(new int[]{1,0,0,0,0,1},2);
+
+
 
     }
+
+    public static boolean canPlaceFlowers(int[] flowerbed, int n) {
+        int max=0;
+
+        if(flowerbed.length==1){
+            if(flowerbed[0]==0){
+                max++;
+            }
+            return max>=n;
+        }
+
+        for(int i=0;i<flowerbed.length;i++){
+            if(i==0) {
+                if(flowerbed[i]==0 && flowerbed[i+1]==0){
+                    flowerbed[i]=1;
+                    max++;
+                    continue;
+                }else{
+                    continue;
+                }
+
+            }else if (i==flowerbed.length-1){
+                if(flowerbed[i]==0 && flowerbed[i-1]==0 ){
+                    flowerbed[i]=1;
+                    max++;
+                    continue;
+                }else{
+                    continue;
+                }
+            }else if (flowerbed[i]==0 && flowerbed[i-1]==0 && flowerbed[i+1]==0){
+                max++;
+                flowerbed[i]=1;
+                continue;
+            }
+        }
+        return max >= n;
+    }
+
+
 
 
     public static boolean isAnagramII(String s,String t){
