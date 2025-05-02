@@ -27,10 +27,64 @@ public class DaVinci {
 //        linkedlist.show();
 //        System.out.println("Size of the list is " +linkedlist.size());
 
-        canPlaceFlowers(new int[]{1,0,0,0,0,1},2);
+//        canPlaceFlowers(new int[]{1,0,0,0,0,1},2);
+
+        System.out.println(( 567   -  (567%10) ) /10);
 
 
+    }
 
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     *     int val;
+     *     ListNode next;
+     *     ListNode() {}
+     *     ListNode(int val) { this.val = val; }
+     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+
+       public class ListNode {
+          int val;
+          ListNode next;
+          ListNode() {}
+          ListNode(int val) { this.val = val; }
+          ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+      }
+    class Solution {
+        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+            int one =0 , two =0;
+            int pwr=0;
+            ListNode result = new ListNode();
+
+            while(l1.next!=null){
+                one += l1.val * Math.pow(10,pwr++);
+                l1=l1.next;
+            }
+            pwr=0;
+            while(l2.next!=null){
+                two += l2.val * Math.pow(10,pwr++);
+                l2=l2.next;
+            }
+            int res = one+two;
+
+            result = add(res,result);
+
+            return result;
+
+        }
+
+
+        ListNode add (int res,ListNode result){
+            while(res>0){
+                result = new ListNode(res);
+                res = (res - (res%10))/10;
+                add(res,result.next);
+            }
+            return result;
+        }
     }
 
 
