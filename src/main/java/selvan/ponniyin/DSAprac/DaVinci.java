@@ -29,63 +29,56 @@ public class DaVinci {
 
 //        canPlaceFlowers(new int[]{1,0,0,0,0,1},2);
 
-        System.out.println(( 567   -  (567%10) ) /10);
+//        System.out.println(( 567   -  (567%10) ) /10);
 
-
+        ListNode one = new ListNode(2 , new ListNode(4, new ListNode(3)));
+        ListNode two = new ListNode(5, new ListNode(6, new ListNode(4)));
+      ListNode res =  addTwoNumbers(one,two);
+        System.out.println("What the fook is this!");
     }
 
 
-    /**
-     * Definition for singly-linked list.
-     * public class ListNode {
-     *     int val;
-     *     ListNode next;
-     *     ListNode() {}
-     *     ListNode(int val) { this.val = val; }
-     *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-     * }
-     */
 
-       public class ListNode {
+
+
+
+       public static class ListNode {
           int val;
           ListNode next;
           ListNode() {}
           ListNode(int val) { this.val = val; }
           ListNode(int val, ListNode next) { this.val = val; this.next = next; }
       }
-    class Solution {
-        public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
             int one =0 , two =0;
             int pwr=0;
             ListNode result = new ListNode();
 
-            while(l1.next!=null){
+            while(l1!=null){
                 one += l1.val * Math.pow(10,pwr++);
                 l1=l1.next;
             }
             pwr=0;
-            while(l2.next!=null){
+            while(l2!=null){
                 two += l2.val * Math.pow(10,pwr++);
                 l2=l2.next;
             }
             int res = one+two;
 
-            result = add(res,result);
-
-            return result;
+            return add(res,result);
 
         }
 
 
-        ListNode add (int res,ListNode result){
+        static ListNode add (int res,ListNode result){
             while(res>0){
-                result = new ListNode(res);
+                result = new ListNode(res%10);
                 res = (res - (res%10))/10;
-                add(res,result.next);
+                  result.next = add(res,result.next);
             }
             return result;
         }
-    }
+
 
 
     public static int[] twoSum(int[] nums, int target) {
