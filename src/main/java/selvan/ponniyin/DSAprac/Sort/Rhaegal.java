@@ -25,9 +25,50 @@ public class Rhaegal {
 //        String s = "Guru prasaath";
 ////        String[] res = s.split(" ");
 //        System.out.println(s.contains("a"));
-//        System.out.println(Arrays.toString(productExceptSelf(new int[]{1, 2, 3, 4})));
-        System.out.println(longestConsecutive(new int[] {9,1,4,7,3,-1,0,5,8,-1,6}));
+//        System.out.println(Arrays.toString(productExceptSelf(new int[]{1, 2, 3, 4})));"abcabcbb"
+//Output: 3
+//Explanation: The answer is "abc", with the length of 3.
+//
+//Example 2:
+//
+//Input: s = "bbbbb"
+//Output: 1
+//Explanation: The answer is "b", with the length of 1.
+//
+//Example 3:
+//
+//Input: s = "pwwkew"
+//        System.out.println(longestConsecutive(new int[] {9,1,4,7,3,-1,0,5,8,-1,6}));
+        System.out.println(lengthOfLongestSubstring("abcabcbb"));
+        System.out.println(lengthOfLongestSubstring("bbbb"));
+        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring("aab"));
+        System.out.println(lengthOfLongestSubstring("qrsvbspk"));
+        System.out.println(lengthOfLongestSubstring("dvdf"));
+
     }
+
+
+    public static int lengthOfLongestSubstring(String s) {
+        Set<Character> result = new HashSet<>();
+        char[] sarr = s.toCharArray();
+
+        int ptr1=0,  ptr2 =0;
+        int length =0;
+        while(ptr2  <  s.length()){
+            if(!result.contains(sarr[ptr2]) ){
+                result.add(sarr[ptr2++]);
+            }else{
+                result.clear();
+                ptr2 = ++ptr1;
+            }
+            length = Math.max(length,result.size());
+        }
+        return length ;
+    }
+
+
+
 
     public static int longestConsecutive(int[] nums) {
         Set<Integer> res = new HashSet<>();
