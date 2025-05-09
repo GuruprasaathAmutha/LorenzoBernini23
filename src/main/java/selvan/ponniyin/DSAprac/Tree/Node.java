@@ -1,19 +1,16 @@
 package selvan.ponniyin.DSAprac.Tree;
 
-public class Node<T> {
+public class Node {
 
-    T data;
+    int data;
     Node left;
     Node right;
 
 
-    public Node (T data){
+    public Node (int data){
         this.data=data;
     }
 
-    public void add(T data){
-
-    }
 
 
 }

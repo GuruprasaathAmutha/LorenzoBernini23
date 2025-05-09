@@ -13,11 +13,9 @@ public class DaVinci {
 
     public static void main(String[] args) {
 //        HashMap<Character,Integer> smap,tmap = new HashMap<>();
-//
 //        String s = "jean";
 //        String k = "neaj";
 //        System.out.println(isAnagramII(s, k));
-
 //        LLImp linkedlist = new LLImp();
 //        linkedlist.insert(1);
 //        linkedlist.insert(2);
@@ -26,11 +24,8 @@ public class DaVinci {
 //        linkedlist.insertAt(3,5);
 //        linkedlist.show();
 //        System.out.println("Size of the list is " +linkedlist.size());
-
 //        canPlaceFlowers(new int[]{1,0,0,0,0,1},2);
-
 //        System.out.println(( 567   -  (567%10) ) /10);
-//
 //        ListNode one = new ListNode(2 , new ListNode(4, new ListNode(3)));
 //        ListNode two = new ListNode(5, new ListNode(6, new ListNode(4)));
 //      ListNode res =  addTwoNumbers(one,two);
@@ -38,11 +33,17 @@ public class DaVinci {
 //        2
 //5 5 8 8 8 9 11 11 11 11 11
 //4 4 4 4 6 8 9 9 9 11 13  a[] = [100, 112, 256, 349, 770], b[] = [72, 86, 113, 119, 265, 445, 892], k = 7
-
-
 //        System.out.println(kthElement(new int[] {5 ,5, 8, 8, 8, 9, 11, 11, 11, 11, 11} , new int[] {4 ,4, 4, 4, 6, 8, 9, 9, 9, 11, 13},2));
 //        System.out.println(kthElement(new int[] {2,3,6,7,9},new int[]{1,4,8,10},5));
         System.out.println(kthElement(new int[] {100, 112, 256, 349, 770},new int[]{72, 86, 113, 119, 265, 445, 892},7));
+    }
+
+    public static int[] productExceptSelf(int[] nums) {
+        int[] result = new int[nums.length];
+
+
+
+        return null;
     }
 
 
