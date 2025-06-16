@@ -16,8 +16,35 @@ public class StreamsPractise {
 //
 //        System.out.println(evenAvg(Arrays.asList(1, , 3, 4,5,6)));
 //        System.out.println(isPrime(8));/
-        System.out.println(primeAvg(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12)));
+//        System.out.println(primeAvg(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12)));
+//        System.out.println(threshold(Arrays.asList(10,20,30,40,55,111,222),40));
+        System.out.println(csString(Arrays.asList("Guru","Prasaath","Amutha")));
     }
+
+
+    //Write a Java program to convert a list of strings to lowercase
+    // using streams and sort them by their lengths.
+
+
+
+
+//    Write a Java program to convert a list of strings to uppercase using streams
+//    and then join them into a single comma-separated string.
+
+    public static String csString(List<String> rope){
+        return rope.stream().map(String::toUpperCase).reduce("",(a,b) -> a +","+b);
+    }
+
+
+
+//    Write a Java program to compute the average of a list of integers
+//    using streams after filtering out numbers exceeding a given threshold.
+
+
+    public static double threshold(List<Integer> nums,int t){
+        return nums.stream().filter(n -> n > t).mapToDouble(Integer::doubleValue).average().orElse(0.0);
+    }
+
 
 
 
