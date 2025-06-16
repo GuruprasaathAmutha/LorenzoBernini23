@@ -14,27 +14,34 @@ public class StreamsPractise {
 //        }
 //        System.out.println(avg(nums));
 //
-//        List<String> names = new ArrayList<>();
-//
-//        names.add("Guru");
-//        names.add("Guru");
-//        names.add("Guru");
-//        names.add("Guru");
-//        names.add("Guru");
-//        names.add("Guru");
-//
-//        List<String> res = changeCase(names, CaseCasting.LowerCase);
-//        System.out.println(res.toString());
-
-
-        System.out.println(evenAvg(Arrays.asList(1, 2, 3, 4,5,6)));
-
+//        System.out.println(evenAvg(Arrays.asList(1, , 3, 4,5,6)));
+//        System.out.println(isPrime(8));/
+        System.out.println(primeAvg(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12)));
     }
+
+
+
+
 
 
 //    Write a Java program to calculate the average of prime numbers from a list of integers using streams.
 
+    public static double primeAvg(List<Integer> nums){
+        return nums.stream().filter(StreamsPractise::isPrime).mapToDouble(Integer::doubleValue).average().orElse(0.0);
+    }
 
+
+
+    public static boolean isPrime(int num){
+        if(num<=1) return false;
+        if(num==2) return true;
+        if(num%2==0) return false;
+
+        for(int i=3 ; i <= Math.sqrt(num);i += 2){
+            if(num%i==0) return false;
+        }
+        return true;
+    }
 
 
 
