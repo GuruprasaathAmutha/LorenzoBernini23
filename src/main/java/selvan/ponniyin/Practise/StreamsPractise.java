@@ -26,6 +26,11 @@ public class StreamsPractise {
     // using streams and sort them by their lengths.
 
 
+//    public static List<String> sortLength(List<Integer> rope){
+//        return rope.stream().
+//    }
+
+
 
 
 //    Write a Java program to convert a list of strings to uppercase using streams
