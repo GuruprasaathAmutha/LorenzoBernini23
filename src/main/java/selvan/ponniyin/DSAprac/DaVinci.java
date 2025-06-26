@@ -40,13 +40,63 @@ public class DaVinci {
 //        System.out.println(maxOperations(new int[]{4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4},2));
 //        System.out.println(canCompleteCircuit(new int[]{1,2,3,4,5},new int[]{3,4,5,1,2})); "a","a","b","b","c","c","c"
 
-        System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}));
+//        System.out.println(findMaxAverage(new int[]{-1},1));
+        System.out.println(maxVowels("weallloveyou",7));
     }
 
-    public double findMaxAverage(int[] nums, int k) {
+
+    public static int maxVowels(String s, int k) {
+        int maxcount=0;
+        int count=0;
+        int ptr1=0;
+        int ptr2=k-1;
+        char[] sarr = s.toCharArray();
+        List<Character> vowels = Arrays.asList('a','e','i','o','u');
+        for(int i=0; i<k;i++){
+            if(vowels.contains(sarr[i])){
+                count++;
+            }
+        }
+
+        while(ptr2 < s.length()){
+            maxcount = Math.max(maxcount,count);
+            if(vowels.contains(sarr[ptr1++])){
+                count--;
+            }
+            if(ptr2!=s.length()-1){
+                if(vowels.contains(sarr[++ptr2])){
+                    count++;
+                }
+            }else{
+                ptr2++;
+            }
+        }
+        return maxcount;
+
+    }
 
 
-        return 0;
+
+
+    public static double findMaxAverage(int[] nums, int k) {
+
+        if(nums.length ==1) return (double)nums[0];
+        int ptr1=0;
+        int ptr2=k-1;
+        int sum=0;
+        double result=Integer.MIN_VALUE;
+
+        while(ptr2 < nums.length){
+            for(int i=ptr1 ; i<=ptr2;i++){
+                sum+= nums[i];
+            }
+            result = Math.max(result, (double) sum/k);
+            sum=0;
+            ptr1++;
+            ptr2++;
+        }
+
+        return result;
     }
 
 
