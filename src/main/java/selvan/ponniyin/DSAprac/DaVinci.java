@@ -3,10 +3,7 @@ package selvan.ponniyin.DSAprac;
 import selvan.ponniyin.DSAprac.LinkedList.DLL;
 import selvan.ponniyin.DSAprac.LinkedList.LLImp;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DaVinci {
 
@@ -35,7 +32,181 @@ public class DaVinci {
 //4 4 4 4 6 8 9 9 9 11 13  a[] = [100, 112, 256, 349, 770], b[] = [72, 86, 113, 119, 265, 445, 892], k = 7
 //        System.out.println(kthElement(new int[] {5 ,5, 8, 8, 8, 9, 11, 11, 11, 11, 11} , new int[] {4 ,4, 4, 4, 6, 8, 9, 9, 9, 11, 13},2));
 //        System.out.println(kthElement(new int[] {2,3,6,7,9},new int[]{1,4,8,10},5));
-        System.out.println(kthElement(new int[] {100, 112, 256, 349, 770},new int[]{72, 86, 113, 119, 265, 445, 892},7));
+//        System.out.println(kthElement(new int[] {100, 112, 256, 349, 770},new int[]{72, 86, 113, 119, 265, 445, 892},7));
+//        moveZeroes(new int[] {0,1,0,3,12});
+//        System.out.println(isSubsequence("abc","ahbgdc"));
+//        System.out.println(maxArea(new int[]{1,1}));//height = [1,8,6,2,5,4,8,3,7]
+//        System.out.println(maxOperations(new int[]{1,2,3,4},5));
+//        System.out.println(maxOperations(new int[]{4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4},2));
+//        System.out.println(canCompleteCircuit(new int[]{1,2,3,4,5},new int[]{3,4,5,1,2})); "a","a","b","b","c","c","c"
+
+        System.out.println(compress(new char[]{'a','b','b','b','b','b','b','b','b','b','b','b','b'}));
+    }
+
+    public double findMaxAverage(int[] nums, int k) {
+
+
+        return 0;
+    }
+
+
+
+
+    public static int compress(char[] chars) {
+
+        if(chars.length==1) return 1;
+        char current = chars[0];
+        int count =0;
+        int ptr1=0;
+        int ptr2=0;
+
+
+        while(ptr2 < chars.length){
+            if(chars[ptr2]==current){
+                count++;
+                ptr2++;
+                if(ptr2>chars.length-1){
+                    if(count<10){
+                        chars[++ptr1]= (char) ('0' + count);
+                        current = chars[++ptr1];
+                        count=0;
+                    }else{
+                        for(int j=0; j<= String.valueOf(count).length()-1;j++){
+                            chars[++ptr1]= String.valueOf(count).charAt(j);
+                        }
+                        current=chars[++ptr1];
+                        count=0;
+                    }
+                }
+            }else{
+                if(count==1){
+                    count=0;
+                    current=chars[++ptr1];
+                }else{
+                    if(count<10){
+                        chars[++ptr1]= (char) ('0' + count);
+                        current = chars[++ptr1];
+                        count=0;
+                    }else{
+                        for(int j=0; j<= String.valueOf(count).length()-1;j++){
+                            chars[++ptr1]= String.valueOf(count).charAt(j);
+                        }
+                        current=chars[++ptr1];
+                        count=0;
+                    }
+                }
+            }
+        }
+        System.out.println(Arrays.toString(chars));
+        return ptr1;
+    }
+
+    public static int canCompleteCircuit(int[] gas, int[] cost) {
+
+        return 0;
+    }
+
+
+
+
+    public static int maxOperations(int[] nums, int k) {
+        int counter=0;
+        int ptr1=0;
+        int ptr2=1;
+        Arrays.sort(nums);
+        List<Integer> memo = new ArrayList<>();
+
+        while(ptr1<nums.length && ptr2<nums.length){
+
+            if(!memo.contains(ptr1) && !memo.contains(ptr2)){
+                if(nums[ptr1] + nums[ptr2] != k){
+                    ptr2++;
+                }else{
+                    memo.add(ptr1++);
+                    memo.add(ptr2);
+                    ptr2 = ptr1+1;
+                    counter++;
+                }
+            }else{
+                ptr1++;
+                ptr2++;
+            }
+        }
+        return counter;
+    }
+
+    public static int maxArea(int[] height) {
+
+        //height is height[i]
+        //width is i
+
+        int i=0;
+        int j=height.length-1;
+        int max=0;
+
+        while(i<j){
+            int area = Math.min(height[i],height[j])*  (j - i);
+            if(Math.min(height[i],height[j]) == height[i]){
+                i++;
+            }else{
+                j--;
+            }
+            max = Math.max(area,max);
+        }
+        return max;
+    }
+
+
+    public static boolean isSubsequence(String s, String t) {
+
+        if(t.contains(s)) return true;
+
+        char[] sarr = s.toCharArray();
+        char[] tarr = t.toCharArray();
+
+        int i=0;
+        int j=0;
+
+            while(j<=t.length()-1){
+                if(sarr[i]==tarr[j++]){
+                    i++;
+                    if(i>s.length()-1){
+                        return true;
+                    }
+                }
+            }
+
+        return false;
+    }
+
+
+    public static void moveZeroes(int[] nums) {
+        if(nums.length==1) return;
+
+        int ptr1=0;
+        int ptr2=1;
+
+        while(ptr2<nums.length){
+            if(nums[ptr1]==0){
+                if(nums[ptr2]!=0){
+                    int temp = nums[ptr2];
+                    nums[ptr2]=nums[ptr1];
+                    nums[ptr1]=temp;
+                    ptr1++;
+                    ptr2++;
+                }else{
+                    ptr2++;
+                }
+            }else{
+                ptr1++;
+                ptr2++;
+            }
+        }
+
+
+        System.out.println(Arrays.toString(nums));
+
+
     }
 
     public static int[] productExceptSelf(int[] nums) {
