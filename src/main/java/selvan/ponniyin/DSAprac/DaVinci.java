@@ -1,9 +1,11 @@
 package selvan.ponniyin.DSAprac;
 
-import selvan.ponniyin.DSAprac.LinkedList.DLL;
-import selvan.ponniyin.DSAprac.LinkedList.LLImp;
 
+
+import java.sql.Array;
 import java.util.*;
+import java.util.stream.Collectors;
+
 
 public class DaVinci {
 
@@ -41,7 +43,50 @@ public class DaVinci {
 //        System.out.println(canCompleteCircuit(new int[]{1,2,3,4,5},new int[]{3,4,5,1,2})); "a","a","b","b","c","c","c"
 
 //        System.out.println(findMaxAverage(new int[]{-1},1));
-        System.out.println(maxVowels("weallloveyou",7));
+//        System.out.println(maxVowels("weallloveyou",7));
+//        Map<String,String> dummy = new HashMap<>();
+
+//        findDifference(new int[] {1,2,3},new int[] {2,4,6});
+        System.out.println(uniqueOccurrences(new int[]{1, 2, 2, 1, 3}));
+    }
+    public static boolean uniqueOccurrences(int[] arr) {
+        Map<Integer,Integer> occurences = new HashMap<>();
+        Set<Integer> one = new HashSet<>();
+        for(int x : arr){
+            if(!occurences.containsKey(x)){
+                occurences.put(x,0);
+            }else{
+                occurences.put(x,occurences.get(x)+1);
+            }
+        }
+       for(int i : occurences.keySet()){
+           one.add(occurences.get(i));
+       }
+        return one.size()==occurences.size();
+
+
+    }
+
+
+
+    public static List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> answer = new ArrayList<> ();
+
+        Set<Integer> n1 = Arrays.stream(nums1).boxed().collect(Collectors.toSet());
+        Set<Integer> n2 = Arrays.stream(nums2).boxed().collect(Collectors.toSet());
+
+
+        for(int i : nums2){
+            n1.remove(i);
+        }
+
+        for(int i : nums1){
+            n2.remove(i);
+        }
+
+        answer.add(n1.stream().toList());
+        answer.add(n2.stream().toList());
+        return answer;
     }
 
 
