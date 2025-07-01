@@ -2,6 +2,8 @@ package selvan.ponniyin.DSAprac;
 
 
 
+import selvan.ponniyin.mac.Practise;
+
 import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,9 +49,41 @@ public class DaVinci {
 //        Map<String,String> dummy = new HashMap<>();
 
 //        findDifference(new int[] {1,2,3},new int[] {2,4,6});
-        System.out.println(uniqueOccurrences(new int[]{1, 2, 2, 1, 3}));
+//        System.out.println(uniqueOccurrences(new int[]{1, 2, 2, 1, 3}));
+
+
     }
-    public static boolean uniqueOccurrences(int[] arr) {
+
+
+    class RecentCounter {
+
+        Queue<Integer> queue;
+
+        public RecentCounter() {
+            queue = new PriorityQueue<>();
+        }
+
+        public int ping(int t) {
+            queue.add(t);
+            removeOldPings(t);
+            return queue.size();
+        }
+
+
+        public void removeOldPings(int t){
+
+            while(queue.element()< (t-300)){
+                queue.poll();
+            }
+
+        }
+    }
+
+
+
+
+
+    public  static boolean uniqueOccurrences(int[] arr) {
         Map<Integer,Integer> occurences = new HashMap<>();
         Set<Integer> one = new HashSet<>();
         for(int x : arr){
