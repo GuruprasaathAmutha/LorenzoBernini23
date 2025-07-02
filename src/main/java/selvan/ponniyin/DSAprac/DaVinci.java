@@ -55,6 +55,13 @@ public class DaVinci {
     }
 
 
+
+    public static ListNode reverseList(ListNode head) {
+
+        return null;
+    }
+
+
     class RecentCounter {
 
         Queue<Integer> queue;

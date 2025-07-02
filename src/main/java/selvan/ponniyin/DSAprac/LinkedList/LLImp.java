@@ -49,7 +49,6 @@ public class LLImp {
         return insertAt(index,data,head.next,++count);
     }
 
-
     public int size(){
         Node current = head;
         int count =0;

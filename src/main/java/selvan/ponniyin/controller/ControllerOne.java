@@ -40,6 +40,16 @@ public class ControllerOne {
 	}
 
 
+
+	@GetMapping("/allIds")
+	public ResponseEntity<List<Integer>> allIds(){
+
+		List<Integer> ids = ts.getallIds();
+		return ResponseEntity.ok(ts.getallIds());
+
+	}
+
+
 	@GetMapping("/onProgress")
 	public ResponseEntity<List<Tasks>> onProgress() {
 		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("OnProgress"));

@@ -34,6 +34,11 @@ public class TaskSvc {
 		return false;
 	}
 
+
+	public List<Integer> getallIds(){
+		return trepo.getIds();
+	}
+
 	public boolean updateToCompleted(int id) {
 		Optional<Tasks> existing = trepo.findById(id);
 		if (existing.isPresent()) {
