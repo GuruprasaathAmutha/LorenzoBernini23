@@ -52,6 +52,58 @@ public class DaVinci {
 //        System.out.println(uniqueOccurrences(new int[]{1, 2, 2, 1, 3}));
 
 
+        ListNode n = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5)))));
+
+        ListNode n2 =Solution.reverseList(n);
+
+
+        System.out.println("n2");
+
+
+
+    }
+
+
+
+
+
+    class Solution {
+        public static ListNode reverseList(ListNode head) {
+            Stack<Integer> s = traverse(head);
+            ListNode l1 = new ListNode();
+            return insertReverse(l1,s);
+        }
+
+
+        public static ListNode insertReverse(ListNode n , Stack<Integer> s){
+            if(!s.isEmpty()){
+                n.val=s.pop();
+                if(!s.isEmpty()){
+                    n.next = new ListNode();
+                    n.next= insertReverse(n.next,s);
+                }
+
+
+            }
+            return n;
+        }
+
+
+        public static Stack<Integer> traverse(ListNode head){
+            Stack<Integer> s1 = new Stack<Integer>();
+            if(head!=null){
+                s1.push(head.val);
+                while (head.next!=null){
+                    head=head.next;
+                    s1.push(head.val);
+                }
+
+            }else{
+                return null;
+            }
+
+            return s1;
+        }
     }
 
 
