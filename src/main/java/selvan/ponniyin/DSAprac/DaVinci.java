@@ -52,15 +52,57 @@ public class DaVinci {
 //        System.out.println(uniqueOccurrences(new int[]{1, 2, 2, 1, 3}));
 
 
-        ListNode n = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5)))));
+//        ListNode n = new ListNode(1,new ListNode(2,new ListNode(3,new ListNode(4,new ListNode(5)))));
+//
+//        ListNode n2 =Solution.reverseList(n);
+//
+//
+//        System.out.println("n2");
 
-        ListNode n2 =Solution.reverseList(n);
+
+        System.out.println(longestPalindromicSubstring("malayalam"));
 
 
-        System.out.println("n2");
+    }
 
 
+    public static String longestPalindromicSubstring(String s){
+        String result ="";
+        int longest=0;
+        char[] sarr = s.toCharArray();
+        for(int k=0 ;k < sarr.length;k++){
 
+            int i=k;
+            int j=k;
+
+            while(i>=0 && j < s.length() && sarr[i]==sarr[j]){
+                if(j-i +1 > longest){
+                    longest=j-i+1;
+                    result = s.substring(i,j+1);
+                }
+                i-=1;
+                j+=1;
+            }
+
+            i=k;
+            j=k+1;
+
+            while(i>=0 && j<s.length() && sarr[i]==sarr[j]){
+                if(j-i+1 > longest){
+                    longest=j-i+1;
+                    result=s.substring(i,j+1);
+                }
+                i-=1;
+                j+=1;
+            }
+        }
+        return result;
+    }
+
+
+    public static boolean isPalindrome(String s){
+        String r = new StringBuilder(s).reverse().toString();
+        return r.equalsIgnoreCase(s);
     }
 
 
