@@ -2,6 +2,7 @@ package selvan.ponniyin.DSAprac;
 
 
 
+import selvan.ponniyin.mac.Employee;
 import selvan.ponniyin.mac.Practise;
 
 import java.sql.Array;
@@ -60,11 +61,27 @@ public class DaVinci {
 //        System.out.println("n2");
 
 
-        System.out.println(longestPalindromicSubstring("malayalam"));
+//        System.out.println(longestPalindromicSubstring("malayalam"));
 
+        Optional<Employee> o = Optional.ofNullable(checkOptional(1));
 
+        if(o.isPresent()){
+            System.out.println("Object is present");
+            System.out.println(o.get().getName());
+        }else{
+            System.out.println("Null");
+        }
     }
 
+
+
+    public static Employee checkOptional(int i){
+        if(i==0){
+            return new Employee(1,"Guru",1000,"HBO");
+        }else{
+            return null;
+        }
+    }
 
     public static String longestPalindromicSubstring(String s){
         String result ="";
