@@ -12,7 +12,7 @@ import selvan.sasi.Repo.Employee;
 @Controller
 public class ControllerS {
 
-    @Autowired
+
     EmpRepo empRepo;
 
 
