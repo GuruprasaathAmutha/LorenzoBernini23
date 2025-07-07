@@ -9,7 +9,6 @@ import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
 
-
 public class DaVinci {
 
 
@@ -63,14 +62,45 @@ public class DaVinci {
 
 //        System.out.println(longestPalindromicSubstring("malayalam"));
 
-        Optional<Employee> o = Optional.ofNullable(checkOptional(1));
+//        Optional<Employee> o = Optional.ofNullable(checkOptional(1));
+//
+//        if(o.isPresent()){
+//            System.out.println("Object is present");
+//            System.out.println(o.get().getName());
+//        }else{
+//            System.out.println("Null");
+//        }
 
-        if(o.isPresent()){
-            System.out.println("Object is present");
-            System.out.println(o.get().getName());
-        }else{
-            System.out.println("Null");
+        System.out.println(findMaxLength(new int[]{0, 1}));
+    }
+
+
+
+
+    public static  int findMaxLength(int[] nums) {
+
+        int max=0;
+        int zero=0;
+        int one=0;
+
+        int ptr2=0;
+
+        while(ptr2<nums.length){
+            if(nums[ptr2]==0){
+                zero++;
+            }else{
+                one++;
+            }
+
+            if(zero==one){
+                max++;
+            }
+            ptr2++;
+
         }
+
+        return max;
+
     }
 
 
