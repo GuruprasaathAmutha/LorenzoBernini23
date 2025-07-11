@@ -10,10 +10,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", Salary=" + Salary +
+        return ", name='" + name + '\'' +
                 ", Department='" + Department + '\'' +
                 '}';
     }

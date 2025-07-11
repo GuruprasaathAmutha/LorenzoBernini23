@@ -71,9 +71,29 @@ public class DaVinci {
 //            System.out.println("Null");
 //        }
 
-        System.out.println(findMaxLength(new int[]{0, 1}));
+//        System.out.println(findMaxLength(new int[]{0, 1}));
+
+        maxAvg(new String[][]  { {"Guru","100"},{"Prasaath","100"},{"Guru","50"} });
+
+
     }
 
+
+
+    public static String[][] maxAvg(String[][] marks){
+
+
+        HashMap<String,List<Integer>> data = new HashMap<>();
+
+
+
+        for( String s : data.keySet()){
+            System.out.println("Student name is "+ s + " total mark is "+ data.get(s).get(0) + " count is "+ data.get(s).get(1));
+        }
+
+
+        return null;
+    }
 
 
 
