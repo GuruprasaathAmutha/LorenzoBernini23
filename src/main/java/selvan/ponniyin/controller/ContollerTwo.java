@@ -4,13 +4,11 @@ package selvan.ponniyin.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import selvan.ponniyin.dto.Books;
 import selvan.ponniyin.repo.BooksRepo;
 
-@Controller
+@RestController
 public class ContollerTwo {
 
 
@@ -19,10 +17,23 @@ public class ContollerTwo {
 
 
 
-    @GetMapping("/ping")
-    public ResponseEntity<String> ping(){
-        return ResponseEntity.ok("pong");
+    @GetMapping("/ping/{Id}")
+    public Books ping(@PathVariable String  Id){
+        Books bookone = new Books("The Da Vinci Code","Dan Brown");
+        System.out.println(Id);
+        return bookone;
     }
+
+
+
+
+    @PostMapping("/postABook")
+    public Books addBookOne(@RequestBody Books books){
+        return booksRepo.save(books);
+    }
+
+
+
 
 
     @PostMapping("/addBook")

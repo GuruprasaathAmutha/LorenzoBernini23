@@ -8,6 +8,7 @@ import selvan.ponniyin.mac.Practise;
 import java.sql.Array;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class DaVinci {
 
@@ -77,6 +78,22 @@ public class DaVinci {
 
 
     }
+
+
+
+//     Given an array nums of n integers where nums[i] is in the range [1, n],
+//return an array of all the integers in the range [1, n] that do not appear in
+//nums.
+
+//    Input: nums = [4,3,2,7,8,2,3,1]
+//Output: [5,6]
+
+    public static List<Integer> findDisappearedNumbers(int[] nums){
+
+        HashSet<Integer> set = new HashSet<>(Arrays.stream(nums).boxed().toList());
+        return IntStream.range(1,nums.length).filter(i -> !set.contains(i)).boxed().toList();
+    }
+
 
 
 

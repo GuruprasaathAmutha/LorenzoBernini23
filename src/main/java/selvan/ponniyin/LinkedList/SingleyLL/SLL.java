@@ -7,18 +7,16 @@ public class SLL {
 
     public void add(int val){
         Node node = new Node(val);
-
         if(head!=null){
-          head.next=  recAdd(head,val);
+            head.next=recAdd(head.next,val);
         }else{
             head=node;
         }
     }
 
-
     public Node recAdd(Node node,int val){
 
-        if(node.next!=null){
+        if(node!=null){
             node.next=recAdd(node.next,val);
         }else{
             return new Node(val);
