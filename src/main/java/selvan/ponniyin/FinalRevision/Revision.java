@@ -19,7 +19,30 @@ public class Revision {
 
 //
 
-        System.out.println(addDigits(0));
+//        System.out.println(addDigits(0));
+
+//        Person p1 = new Person(23,"Guru","yes");
+//        Person p2 = new Person(25,"Prasaath","yes");
+//        Person p3 = new Person(23,"Guru","yes");
+//
+//
+//        System.out.println(p1.hashCode());
+//        System.out.println(p3.hashCode());
+//
+//
+//        System.out.println(p1.equals(p3));
+
+
+        String s1 =  new String( "Guru");
+        String s2 = "Guru";
+
+
+        System.out.println(s1.hashCode());
+        System.out.println(s2.hashCode());
+
+        System.out.println(s1==s2);
+        System.out.println(s1.equals(s2));
+
 
 
     }

@@ -17,8 +17,8 @@ public class StreamsPractise {
 //        System.out.println(evenAvg(Arrays.asList(1, , 3, 4,5,6)));
 //        System.out.println(isPrime(8));/
 //        System.out.println(primeAvg(Arrays.asList(1,2,3,4,5,6,7,8,9,10,11,12)));
-//        System.out.println(threshold(Arrays.asList(10,20,30,40,55,111,222),40));
-        System.out.println(csString(Arrays.asList("Guru","Prasaath","Amutha")));
+        System.out.println(threshold(Arrays.asList(10,20,30,40,55,111,222),40));
+//        System.out.println(csString(Arrays.asList("Guru","Prasaath","Amutha")));
     }
 
 
@@ -47,7 +47,7 @@ public class StreamsPractise {
 
 
     public static double threshold(List<Integer> nums,int t){
-        return nums.stream().filter(n -> n > t).mapToDouble(Integer::doubleValue).average().orElse(0.0);
+        return nums.stream().mapToDouble(Integer::doubleValue).filter( i -> i>t).average().orElse(-1);
     }
 
 
@@ -118,11 +118,7 @@ public class StreamsPractise {
     }
 
 
-    public static List<String> changeCase(List<String> input, CaseCasting desiredCase) {
-        if (desiredCase == CaseCasting.UpperCase) {
-            return input.stream().map(String::toUpperCase).collect(Collectors.toList());
-        } else {
-            return input.stream().map(String::toLowerCase).collect(Collectors.toList());
-        }
+    public static List<String> changeCase(List<String> input) {
+       return input.stream().map(String::toUpperCase).toList();
     }
 }

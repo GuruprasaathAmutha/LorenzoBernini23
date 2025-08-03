@@ -2,6 +2,7 @@ package selvan.ponniyin.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import selvan.ponniyin.dto.Tasks;
-import selvan.ponniyin.repo.TaskRepo;
 import selvan.ponniyin.service.TaskSvc;
 
 @CrossOrigin(origins = {"https://192.168.68.155:5173","http://localhost:5173"})
@@ -31,10 +31,10 @@ public class ControllerOne {
 	}
 
 	@GetMapping("/Pending")
-	public ResponseEntity<List<Tasks>> pending() {
+	public ResponseEntity<Optional<List<Tasks>>> pending() {
 
 
-		List<Tasks> check = ts.findByStatusOrderByTaskidDesc("pending");
+		List<Tasks> check = ts.findByStatusOrderByTaskidDesc("pending").orElseThrow(NullPointerException::new);
 
 		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("pending"));
 	}
@@ -51,12 +51,12 @@ public class ControllerOne {
 
 
 	@GetMapping("/onProgress")
-	public ResponseEntity<List<Tasks>> onProgress() {
+	public ResponseEntity<Optional<List<Tasks>>> onProgress() {
 		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("OnProgress"));
 	}
 
 	@GetMapping("/Completed")
-	public ResponseEntity<List<Tasks>> completed() {
+	public ResponseEntity<Optional<List<Tasks>>> completed() {
 		return ResponseEntity.ok(ts.findByStatusOrderByTaskidDesc("Completed"));
 	}
 

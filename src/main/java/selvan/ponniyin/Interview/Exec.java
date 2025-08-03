@@ -3,41 +3,67 @@ package selvan.ponniyin.Interview;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Stack;
+import java.util.stream.IntStream;
 
 public class Exec {
 
 
     public static void main(String[] args) {
 
-
-
-
-
-        List<Integer> nums = Arrays.asList(10, 8, 6, 1, 30);
-
-
-        //30,10,8,6,1
-
-        System.out.println(nthLargest(nums,2));
-
-//        input: 2
-//
-//                [5,4,1,2,3]
-//
-//        input: 3
-//
-//                [5,4,3,1,2]
+//        System.out.println(removeStars("leet**cod*e"));
+        System.out.println(minEatingSpeed(new int[]{3,6,7,11},8));
     }
 
 
 
-    public static int nthLargest(List<Integer> nums, int n){
 
-        return  nums.stream().sorted(Collections.reverseOrder()).skip(n-1).findFirst().orElse(-1);
+    public static int minEatingSpeed(int[] piles, int h) {
+        int max = Arrays.stream(piles).max().orElse(0);
+        int[] possibleOutcomes = IntStream.range(1,max+1).toArray();
+        System.out.println(timeTaken(3, piles));
+        int res = minEatingSpeedBananas(possibleOutcomes,piles,0,possibleOutcomes.length-1,h);
+        return 0;
     }
 
-//    public static List<Integer> sortLastN(List<Integer> nums, int offset){
-//
-//        return nums.stream().skip(nums.size()-offset).sorted(Collections.reverseOrder()).toList() ;
-//    }
+    public static int timeTaken(int speed,int[] piles){
+        int time=0;
+        for(int i : piles){
+           time += (int) Math.ceil((double)i/  (double)speed);
+        }
+        return time;
+    }
+
+    public static int minEatingSpeedBananas(int[] possibleOutcomes,int[] piles,int start,int end ,int targetHour){
+
+        int mid = (start+end)/2;
+
+        if( timeTaken( possibleOutcomes[mid],piles) <= targetHour){
+
+        }
+        return 0;
+    }
+
+
+
+    public static String removeStars(String s) {
+
+        String[] sarr = s.split("");
+        StringBuilder sb = new StringBuilder();
+
+        Stack<String> stack= new Stack();
+        for(String a: sarr){
+            if(!a.equals("*")){
+                stack.push(a);
+            }else{
+                stack.pop();
+            }
+        }
+        for(String a : stack){
+            sb.append(a);
+        }
+        return sb.toString();
+    }
+
+
 }
