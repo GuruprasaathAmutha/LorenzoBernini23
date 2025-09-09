@@ -13,8 +13,8 @@ public class Exec {
 
 //        System.out.println(removeStars("leet**cod*e"));
         System.out.println(minEatingSpeed(new int[]{3,6,7,11},8));
-    }
 
+    }
 
 
 

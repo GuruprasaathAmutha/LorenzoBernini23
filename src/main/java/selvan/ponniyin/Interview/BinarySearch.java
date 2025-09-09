@@ -5,22 +5,24 @@ public class BinarySearch {
     public static void main(String[] args) {
 
 
-        System.out.println(binarySearch(new int[]{1,2,3,4,5,6,7,8,9,10},0,10,5));
+        System.out.println(binarySearch(new int[]{1,2,3,4,5,6,7,8,9,10},0,9,11));
     }
 
 
-    public static int binarySearch(int[] nums,int start,int end,int target){
+    public static int binarySearch(int[] arr, int start, int end ,int target){
 
-        if(end < start) return -1;
+        int mid = (start+end)/2;
 
-        int mid = (start +end )/2;
+        if(start>end){
+            return -1;
+        }
 
-        if(nums[mid]==target){
+        if(arr[mid]==target){
             return mid;
-        }else if(nums[mid] > target){
-            return binarySearch(nums,start,mid,target);
-        }else {
-            return binarySearch(nums,mid+1,end,target);
+        }else if(arr[mid] < target){
+             return binarySearch(arr,mid+1,end,target);
+        }else{
+            return binarySearch(arr,start,mid-1,target);
         }
     }
 
