@@ -74,10 +74,44 @@ public class DaVinci {
 
 //        System.out.println(findMaxLength(new int[]{0, 1}));
 
-        maxAvg(new String[][]  { {"Guru","100"},{"Prasaath","100"},{"Guru","50"} });
+//        maxAvg(new String[][]  { {"Guru","100"},{"Prasaath","100"},{"Guru","50"} });
 
+
+//        String s1 ="guruguruguruguru";
+//        String s2 ="guru";
+//
+//
+//        System.out.println(s1.contains(s2));
+
+//
+//        int[] a = new int[]{4,4,1,3,1,3,2,2,5,5,1,5,2,1,2,3,5,4};
+//
+//
+//        System.out.println(Arrays.stream(a).max().orElse(-1));
+
+        System.out.println(reverseWords("a good   example"));
 
     }
+
+
+    public static String reverseWords(String s) {
+        s= s.trim();
+        String[] sarr = s.split(" ");
+        List<String> slist = Arrays.asList(sarr);
+
+        StringBuilder sb = new StringBuilder();
+
+        for(int i=slist.size()-1 ; i>=0;i--){
+            if(!slist.get(i).equals("")  ){
+                sb.append(slist.get(i).trim());
+                sb.append(" ");
+            }
+
+        }
+        return sb.toString().trim();
+    }
+
+
 
 
 
