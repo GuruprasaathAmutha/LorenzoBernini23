@@ -33,18 +33,44 @@ public class Revision {
 //        System.out.println(p1.equals(p3));
 
 
-        String s1 =  new String( "Guru");
-        String s2 = "Guru";
+//        String s1 =  new String( "Guru");
+//        String s2 = "Guru";
+//
+//
+//        System.out.println(s1.hashCode());
+//        System.out.println(s2.hashCode());
+//
+//        System.out.println(s1==s2);
+//        System.out.println(s1.equals(s2));
 
 
-        System.out.println(s1.hashCode());
-        System.out.println(s2.hashCode());
-
-        System.out.println(s1==s2);
-        System.out.println(s1.equals(s2));
+        System.out.println(Arrays.toString(productExceptSelf(new int[]{1,2,3,4})));
+    }
 
 
 
+    public static int[] productExceptSelf(int[] nums) {
+        int[] result = new int[nums.length];
+        int prod=1;
+        int suffix=1;
+        for(int i=0;i<nums.length;i++){
+            if(i==0){
+                result[i] = 1;
+            }else{
+                result[i]=prod *nums[i-1];
+                prod *= nums[i-1];
+            }
+        }
+
+        for(int j=nums.length-1;j>=0;j--){
+            if(j==nums.length-1){
+                result[j]= result[j] *suffix;
+            }else{
+                result[j]= result[j] *  nums[j+1]*suffix;
+                suffix *= nums[j+1];
+            }
+        }
+        return result;
     }
 
 

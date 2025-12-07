@@ -5,22 +5,35 @@ public class LinkedList {
     Node head;
 
 
-
-    void add(int data){
-        if(head==null){
+    public void add(int data){
+        if(head == null){
             head = new Node(data);
         }else{
-            add(head,data);
+            Node current = head;
+
+            while(current.next!=null){
+                current=current.next;
+            }
+                current.next=new Node(data);
         }
     }
 
 
-    void add(Node head,int data){
+    public void printAll(){
+        if (head==null){
+            System.out.println("Linked list is emptyy");
+            return;
+        }else{
+            Node current = head;
 
-        while(head!=null){
-            head=head.next;
+            while(current!=null){
+                System.out.println(current.data);
+                current=current.next;
+            }
         }
-        head=new Node(data);
+
     }
+
+
 
 }

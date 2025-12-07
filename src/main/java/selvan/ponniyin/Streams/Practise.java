@@ -99,9 +99,14 @@ public class Practise {
         noteLst.add(new Notes(5, "note5", 55));
 
 
+            int max =  (int) myList.stream().mapToDouble(i ->  Math.ceil ((double) i/7)).sum();
+        System.out.println(  max);
+
+//        System.out.println(  Math.ceil((double)3/7));
+
     }
 
-    static  List<Integer> myList = Arrays.asList(10,15,8,49,25,98,98,32,15);
+    static  List<Integer> myList = Arrays.asList(3,6,7,11);
     static List<Integer> distinctIntList=Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10,1112);
     static List<Integer> myList1= Arrays.asList(1,1,2,3,4,5,6,7,7,8,8,9,9,10,11,12,13);
 static List<String> str1= Arrays.asList("Guru","Prasaath","Amutha");
@@ -115,6 +120,10 @@ static List<String> str2= Arrays.asList("Pradeepikaa","Manivannan");
 //    public static Map<String,List<Notes>> mapIt(List<Notes> notesList){
 //        return notesList.stream().map(Collectors.groupingBy(Notes::getName)).
 //    }
+
+
+
+
 
 
 

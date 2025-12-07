@@ -89,7 +89,73 @@ public class DaVinci {
 //
 //        System.out.println(Arrays.stream(a).max().orElse(-1));
 
-        System.out.println(reverseWords("a good   example"));
+//        System.out.println(reverseWords("a good   example"));
+//canPlaceFlowersone(new int[] {1,0,0,0,1,0,0},2);
+
+
+        System.out.println(minEatingSpeed(new int[]{3,6,7,11},8));
+        System.out.println(minEatingSpeed(new int[]{30,11,23,4,20},5));
+        System.out.println(minEatingSpeed(new int[]{30,11,23,4,20},6));
+    }
+
+
+    public static int minEatingSpeed(int[] piles, int h) {
+
+        return minEatingSpeed(piles,h,Arrays.stream(piles).min().orElse(-1),Arrays.stream(piles).max().orElse(-1),Arrays.stream(piles).max().orElse(-1));
+    }
+
+    public static  int minEatingSpeed(int[] piles,int h, int start,int end,int min){
+        int k = (start+end)/2;
+        int currentTime = (int)    Arrays.stream(piles).mapToDouble(i ->  Math.ceil ((double) i/k)).sum();
+
+        if(start>end){
+            return min;
+        }
+        if(currentTime <= h ){
+            return minEatingSpeed(piles,h,start,k-1, Math.min(k,min) );
+        }else {
+            return minEatingSpeed(piles,h,k+1,end,min);
+        }
+    }
+
+
+
+    public static boolean canPlaceFlowersone(int[] flowerbed, int n) {
+        int possibleCount=0;
+
+        int i=0;
+
+
+        while(i < flowerbed.length){
+            if(possibleCount >= n ) return true;
+
+
+            if(flowerbed[i]==0){
+                if(i==0 || i == flowerbed.length-1){
+                    if(i==0 && flowerbed[i +1]==0){
+                        possibleCount++;
+                        flowerbed[i]=1;
+                        i++;
+                    }else if (i==flowerbed.length-1 && flowerbed[i-1]==0){
+                        possibleCount++;
+                        flowerbed[i]=1;
+                        i++;
+                    }
+                }else if (flowerbed[i +1] == 0 && flowerbed[i-1]==0){
+                    possibleCount++;
+                    flowerbed[i]=1;
+                    i++;
+                }else{
+                    i++;
+                }
+            }else{
+                i++;
+            }
+
+        }
+
+
+        return false;
 
     }
 
@@ -102,7 +168,7 @@ public class DaVinci {
         StringBuilder sb = new StringBuilder();
 
         for(int i=slist.size()-1 ; i>=0;i--){
-            if(!slist.get(i).equals("")  ){
+            if(! slist.get(i).equals("")  ){
                 sb.append(slist.get(i).trim());
                 sb.append(" ");
             }

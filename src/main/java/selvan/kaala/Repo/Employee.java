@@ -1,4 +1,4 @@
-package selvan.sasi.Repo;
+package selvan.kaala.Repo;
 
 
 import jakarta.persistence.Entity;
